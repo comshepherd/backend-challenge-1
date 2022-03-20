@@ -24,16 +24,14 @@ class DiscountHelper {
 
     private fun doApplyDiscount(product: ProductEntity, discount: DiscountEntity?): DiscountResult {
         if (discount == null) {
-            return DiscountResult(product.price, product.price, null)
+            return DiscountResult(product.price, null)
         }
-        val price = product.price
         val finalPrice = product.price * ((100 - discount.discount) % 100) / 100
-        return DiscountResult(price, finalPrice, discount.discount)
+        return DiscountResult(finalPrice, discount.discount)
     }
 }
 
 class DiscountResult(
-    val originalPrice: Int,
     val finalPrice: Int,
     val discountPercentage: Int?,
 )

@@ -20,7 +20,8 @@ CREATE TABLE discounts
     entity      varchar(255) not null,
     sku         varchar(255),
     category_id uuid,
-    discount    int          not null
+    discount    int          not null,
+    foreign key (category_id) references categories (id)
 );
 
 insert into categories(id, code)
