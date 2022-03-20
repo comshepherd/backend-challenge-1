@@ -4,7 +4,7 @@ import com.mytheresa.pastukhov.backendchallenge.dto.Price
 import com.mytheresa.pastukhov.backendchallenge.dto.ProductResponse
 import com.mytheresa.pastukhov.backendchallenge.repository.DiscountRepository
 import com.mytheresa.pastukhov.backendchallenge.repository.ProductRepository
-import com.mytheresa.pastukhov.backendchallenge.repository.buildSpecificationFilters
+import com.mytheresa.pastukhov.backendchallenge.repository.buildSpecificationFilter
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -24,7 +24,7 @@ class ProductService(
     fun getProducts(category: String?, priceLessThan: Int?): List<ProductResponse> {
         val discounts = discountRepository.findAll()
 
-        val specificationFilter = buildSpecificationFilters(category, priceLessThan)
+        val specificationFilter = buildSpecificationFilter(category, priceLessThan)
         val products = productRepository.findAll(specificationFilter, PRODUCT_LIMIT)
 
         return products.toList()

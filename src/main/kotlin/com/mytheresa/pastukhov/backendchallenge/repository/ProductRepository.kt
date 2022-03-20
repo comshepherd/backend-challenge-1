@@ -13,7 +13,7 @@ import javax.persistence.criteria.JoinType
 @Repository
 interface ProductRepository : CrudRepository<ProductEntity, UUID>, JpaSpecificationExecutor<ProductEntity>
 
-fun buildSpecificationFilters(category: String?, priceLessThan: Int?): Specification<ProductEntity> {
+fun buildSpecificationFilter(category: String?, priceLessThan: Int?): Specification<ProductEntity> {
     return Specification<ProductEntity> { root, query, builder ->
         val categoryPredicate = if (category != null && category.isNotBlank()) {
             val categoryJoin: Join<ProductEntity, CategoryEntity> = root.join("category", JoinType.INNER)
