@@ -9,7 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "discounts")
 class DiscountEntity(
-    @Enumerated(EnumType.STRING) var entity: EntityEnum,
+    @Enumerated(EnumType.STRING) val entity: EntityEnum,
     val sku: String?,
     val categoryId: UUID?,
     val discount: Int
